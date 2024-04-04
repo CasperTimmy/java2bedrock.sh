@@ -35,7 +35,7 @@ body:
     id: default-assets-version
     attributes:
       label: Default Assets Version
-      description: Optinally select the default assets version to use for the converted pack.
+      description: Optionally select the default assets version to use for the converted pack.
       options:
         - 1.13.2
         - 1.14.4
@@ -111,7 +111,7 @@ body:
     attributes:
       label: Code of Conduct
       description: |
-        By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/Kas-tle/java2bedrock.sh/blob/main/CODE_OF_CONDUCT.md)
+        By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/CasperTimmy/java2bedrock.sh/blob/main/CODE_OF_CONDUCT.md)
         You further agree that you either own or have permission to use any content you have linked to within this form.
       options:
         - label: I agree to follow this project's Code of Conduct. I have permission to use all assets I have linked to within this form.
