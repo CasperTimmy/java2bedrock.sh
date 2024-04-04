@@ -22,7 +22,7 @@ jobs:
     needs: setup
     timeout-minutes: 2
     outputs:
-      pack_url: ${{ steps.organize-inputs.outputs.pack_url }}
+      pack_url: https://www.dropbox.com/scl/fo/5c2nbimid19mfl2plyyog/h?rlkey=h49xcupgbbyjzi2wzcuk1mjm1&dl=1
       default_pack_url: ${{ steps.organize-inputs.outputs.default_pack_url }}
       merge_pack_url: ${{ steps.organize-inputs.outputs.merge_pack_url }}
       default_assets_version: ${{ steps.organize-inputs.outputs.default_assets_version }}
