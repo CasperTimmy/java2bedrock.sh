@@ -13,14 +13,14 @@ jobs:
       issues: read
     timeout-minutes: 2
     outputs:
-      pack_url: ${{ steps.organize-inputs.outputs.PACK_URL }}
-      default_pack_url: ${{ steps.organize-inputs.outputs.DEFAULT_PACK_URL }}
-      merge_pack_url: ${{ steps.organize-inputs.outputs.MERGE_PACK_URL }}
-      default_assets_version: ${{ steps.organize-inputs.outputs.DEFAULT_ASSETS_VERSION }}
-      block_material: ${{ steps.organize-inputs.outputs.BLOCK_MATERIAL }}
-      attachable_material: ${{ steps.organize-inputs.outputs.ATTACHABLE_MATERIAL }}
-      archive_scratch: ${{ steps.organize-inputs.outputs.ARCHIVE_SCRATCH }}
-      rename_model_files: ${{ steps.organize-inputs.outputs.RENAME_MODEL_FILES }}
+      pack_url: ${{ steps.organize-inputs.outputs.pack_url }}
+      default_pack_url: ${{ steps.organize-inputs.outputs.default_pack_url }}
+      merge_pack_url: ${{ steps.organize-inputs.outputs.merge_pack_url }}
+      default_assets_version: ${{ steps.organize-inputs.outputs.default_assets_version }}
+      block_material: ${{ steps.organize-inputs.outputs.block_material }}
+      attachable_material: ${{ steps.organize-inputs.outputs.attachable_material }}
+      archive_scratch: ${{ steps.organize-inputs.outputs.archive_scratch }}
+      rename_model_files: ${{ steps.organize-inputs.outputs.rename_model_files }}
     steps:
       - name: Issue Forms Body Parser
         id: parse-issue
@@ -41,14 +41,14 @@ jobs:
             "archive_scratch": test_input(.["archive-scratch-files"].text; "false"),
             "rename_model_files": test_input(.["rename-model-files"].text; "false")
           }' > inputs.json
-          echo "PACK_URL=$(jq -r '.pack_url' inputs.json)" >> $GITHUB_ENV
-          echo "DEFAULT_PACK_URL=$(jq -r '.default_pack_url' inputs.json)" >> $GITHUB_ENV
-          echo "MERGE_PACK_URL=$(jq -r '.merge_pack_url' inputs.json)" >> $GITHUB_ENV
-          echo "DEFAULT_ASSETS_VERSION=$(jq -r '.default_assets_version' inputs.json)" >> $GITHUB_ENV
-          echo "BLOCK_MATERIAL=$(jq -r '.block_material' inputs.json)" >> $GITHUB_ENV
-          echo "ATTACHABLE_MATERIAL=$(jq -r '.attachable_material' inputs.json)" >> $GITHUB_ENV
-          echo "ARCHIVE_SCRATCH=$(jq -r '.archive_scratch' inputs.json)" >> $GITHUB_ENV
-          echo "RENAME_MODEL_FILES=$(jq -r '.rename_model_files' inputs.json)" >> $GITHUB_ENV
+          echo "PACK_URL=${{ toJson(steps.organize-inputs.outputs.pack_url) }}" >> $GITHUB_ENV
+          echo "DEFAULT_PACK_URL=${{ toJson(steps.organize-inputs.outputs.default_pack_url) }}" >> $GITHUB_ENV
+          echo "MERGE_PACK_URL=${{ toJson(steps.organize-inputs.outputs.merge_pack_url) }}" >> $GITHUB_ENV
+          echo "DEFAULT_ASSETS_VERSION=${{ toJson(steps.organize-inputs.outputs.default_assets_version) }}" >> $GITHUB_ENV
+          echo "BLOCK_MATERIAL=${{ toJson(steps.organize-inputs.outputs.block_material) }}" >> $GITHUB_ENV
+          echo "ATTACHABLE_MATERIAL=${{ toJson(steps.organize-inputs.outputs.attachable_material) }}" >> $GITHUB_ENV
+          echo "ARCHIVE_SCRATCH=${{ toJson(steps.organize-inputs.outputs.archive_scratch) }}" >> $GITHUB_ENV
+          echo "RENAME_MODEL_FILES=${{ toJson(steps.organize-inputs.outputs.rename_model_files) }}" >> $GITHUB_ENV
 
   convert-pack:
     runs-on: ubuntu-latest
@@ -129,7 +129,7 @@ jobs:
 
             If you notice issues with the converted files, please refer to the action log for errors and open a bug report if you believe there is an issue with the converter. This issue will be closed automatically.
 
-            [1]: https://github.com/Kas-tle/java2bedrock.sh/actions/runs/${{ github.run_id}}
+            [1]: https://github.com/CasperTimmy/java2bedrock.sh/actions/runs/${{ github.run_id}}
           reactions: 'rocket'
       - name: Close Issue
         uses: peter-evans/close-issue@v2
@@ -159,7 +159,7 @@ jobs:
 
             If you believe this is an issue with the converter. please open a bug report. This issue will be closed automatically.
 
-            [1]: https://github.com/Kas-tle/java2bedrock.sh/actions/runs/${{ github.run_id}}
+            [1]: https://github.com/CasperTimmy/java2bedrock.sh/actions/runs/${{ github.run_id}}
           reactions: 'x'
       - name: Close Issue
         uses: peter-evans/close-issue@v2
